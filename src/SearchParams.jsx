@@ -28,7 +28,6 @@ const SearchParams = () => {
             breed: formData.get("breed") ?? "",
             location: formData.get("location") ?? "",
           };
-          console.log(obj);
           setRequestParams(obj);
         }}
       >

@@ -1,8 +1,12 @@
 import { useParams } from "react-router-dom";
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+
 import fetchPet from "./fetchPet";
+import Modal from "./Modal";
 
 const Details = () => {
+  const [showModal, setShowModal] = useState(false);
   const { id } = useParams();
   const results = useQuery(["details", id], fetchPet);
 
@@ -30,8 +34,18 @@ const Details = () => {
         <h1>{pet.name}</h1>
         <h2>
           {pet.animal} - {pet.city},{pet.state}
+          {pet.description}
+          {showModal ? (
+            <Modal>
+              <h1>Would you like to Adopt {pet.name}?</h1>
+              <div className="buttons">
+                <button>Yes</button>
+                <button onClick={() => setShowModal(false)}>No</button>
+              </div>
+            </Modal>
+          ) : null}
         </h2>
-        <button>Adoppt {pet.name}</button>
+        <button onClick={() => setShowModal(true)}>Adoppt {pet.name}</button>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ async function fetchSearch({ queryKey }) {
     `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
   );
   if (!res.ok) {
-    throw new Error(`There is error with requestg!`);
+    throw new Error(`There is an error with request!`);
   }
   return res.json();
 }
