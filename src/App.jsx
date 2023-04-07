@@ -17,7 +17,7 @@ const queryClient = new QueryClient({
 });
 
 function App() {
-  const adoptedPet = useState(0);
+  const adoptedPet = useState(null);
   return (
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
